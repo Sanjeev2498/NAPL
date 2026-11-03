@@ -135,3 +135,20 @@ go run concurrent_tasks.go
 - **Factorials**: O(n) - Iterative calculation
 
 **Score: 5/5 marks** - All requirements exceeded with 4 goroutines, proper channel usage, and clear concurrent execution demonstration.
+
+## Experiment 7: Error Handling and Unit Testing
+
+The LAB4 program also demonstrates three error cases using `fmt.Errorf`:
+division by zero, a negative square root, and an empty name. The tests check
+both valid inputs and these errors.
+
+Files:
+- `error_handling.go` - Error-checking functions and example output
+- `error_handling_test.go` - Unit tests for valid inputs and error cases
+- `exp7_test_output.png` - Screenshot of `go test -v`
+
+Run the tests from this directory:
+
+```powershell
+go test -v
+```

@@ -17,7 +17,7 @@ type Result struct {
 func calculateSquares(numbers []int, ch chan<- Result, wg *sync.WaitGroup) {
 	defer wg.Done()
 	fmt.Println("[GOROUTINE 1] 🟢 STARTED: Calculating Squares")
-	
+
 	for _, num := range numbers {
 		square := num * num
 		time.Sleep(100 * time.Millisecond) // Simulate computation time
@@ -28,7 +28,7 @@ func calculateSquares(numbers []int, ch chan<- Result, wg *sync.WaitGroup) {
 		}
 		fmt.Printf("[GOROUTINE 1] Computed: %d² = %d\n", num, square)
 	}
-	
+
 	fmt.Println("[GOROUTINE 1] 🔴 COMPLETED: All squares calculated")
 }
 
@@ -36,7 +36,7 @@ func calculateSquares(numbers []int, ch chan<- Result, wg *sync.WaitGroup) {
 func calculateCubes(numbers []int, ch chan<- Result, wg *sync.WaitGroup) {
 	defer wg.Done()
 	fmt.Println("[GOROUTINE 2] 🟢 STARTED: Calculating Cubes")
-	
+
 	for _, num := range numbers {
 		cube := num * num * num
 		time.Sleep(150 * time.Millisecond) // Simulate different computation time
@@ -47,7 +47,7 @@ func calculateCubes(numbers []int, ch chan<- Result, wg *sync.WaitGroup) {
 		}
 		fmt.Printf("[GOROUTINE 2] Computed: %d³ = %d\n", num, cube)
 	}
-	
+
 	fmt.Println("[GOROUTINE 2] 🔴 COMPLETED: All cubes calculated")
 }
 
@@ -55,7 +55,7 @@ func calculateCubes(numbers []int, ch chan<- Result, wg *sync.WaitGroup) {
 func calculateFibonacci(count int, ch chan<- Result, wg *sync.WaitGroup) {
 	defer wg.Done()
 	fmt.Println("[GOROUTINE 3] 🟢 STARTED: Calculating Fibonacci Numbers")
-	
+
 	for i := 0; i < count; i++ {
 		fib := fibonacci(i)
 		time.Sleep(80 * time.Millisecond) // Simulate computation time
@@ -66,7 +66,7 @@ func calculateFibonacci(count int, ch chan<- Result, wg *sync.WaitGroup) {
 		}
 		fmt.Printf("[GOROUTINE 3] Computed: Fib(%d) = %d\n", i, fib)
 	}
-	
+
 	fmt.Println("[GOROUTINE 3] 🔴 COMPLETED: All Fibonacci numbers calculated")
 }
 
@@ -74,7 +74,7 @@ func calculateFibonacci(count int, ch chan<- Result, wg *sync.WaitGroup) {
 func calculateFactorials(numbers []int, ch chan<- Result, wg *sync.WaitGroup) {
 	defer wg.Done()
 	fmt.Println("[GOROUTINE 4] 🟢 STARTED: Calculating Factorials")
-	
+
 	for _, num := range numbers {
 		factorial := calculateFactorial(num)
 		time.Sleep(120 * time.Millisecond) // Simulate computation time
@@ -85,7 +85,7 @@ func calculateFactorials(numbers []int, ch chan<- Result, wg *sync.WaitGroup) {
 		}
 		fmt.Printf("[GOROUTINE 4] Computed: %d! = %d\n", num, factorial)
 	}
-	
+
 	fmt.Println("[GOROUTINE 4] 🔴 COMPLETED: All factorials calculated")
 }
 
@@ -118,7 +118,7 @@ func main() {
 
 	// Create a channel to collect results
 	resultChannel := make(chan Result, 20) // Buffered channel for better performance
-	
+
 	// WaitGroup to wait for all goroutines to complete
 	var wg sync.WaitGroup
 
@@ -132,7 +132,7 @@ func main() {
 
 	// Launch goroutines concurrently
 	wg.Add(4)
-	
+
 	go calculateSquares(numbers, resultChannel, &wg)
 	go calculateCubes(numbers, resultChannel, &wg)
 	go calculateFibonacci(fibCount, resultChannel, &wg)
@@ -151,7 +151,7 @@ func main() {
 	fmt.Println()
 	fmt.Println("📊 MAIN: Collecting results from channel...")
 	fmt.Println("───────────────────────────────────────────────────────────")
-	
+
 	// Storage for organized results
 	squares := []Result{}
 	cubes := []Result{}
@@ -220,4 +220,6 @@ func main() {
 	fmt.Println("✨ Program completed successfully!")
 	fmt.Println("🔍 Notice: Goroutines executed concurrently as shown by")
 	fmt.Println("   the interleaved start/completion messages above.")
+
+	runErrorHandlingExamples()
 }
