@@ -34,7 +34,7 @@ func (p Person) PrintData() {
 	fmt.Printf("Name:   %s\n", p.Name)
 	fmt.Printf("Age:    %d years\n", p.Age)
 	fmt.Printf("Job:    %s\n", p.Job)
-	fmt.Printf("Salary: $%.2f\n", p.Salary)
+	fmt.Printf("Salary: Rs%.2f\n", p.Salary)
 	fmt.Println("================================")
 }
 

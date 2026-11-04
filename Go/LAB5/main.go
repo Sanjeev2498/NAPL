@@ -5,7 +5,7 @@ import (
 )
 
 func main() {
-	fmt.Println("=== Inventory Management System ===")
+	fmt.Println("Inventory Management System ")
 	fmt.Println()
 
 	// Create inventory
@@ -53,6 +53,6 @@ func main() {
 
 	fmt.Printf("\n--- Inventory Summary ---\n")
 	fmt.Printf("Total Items: %d\n", stats.TotalItems)
-	fmt.Printf("Total Value: $%.2f\n", stats.TotalValue)
+	fmt.Printf("Total Value: Rs%.2f\n", stats.TotalValue)
 	fmt.Println("\nProgram completed successfully!")
 }

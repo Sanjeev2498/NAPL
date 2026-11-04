@@ -145,7 +145,7 @@ func (inv *Inventory) DisplayItems() {
 
 	for _, item := range inv.items {
 		total := float64(item.Quantity) * item.Price
-		fmt.Printf("%-5d %-20s %-10d $%-9.2f $%-9.2f\n",
+		fmt.Printf("%-5d %-20s %-10d Rs%-9.2f Rs%-9.2f\n",
 			item.ID, item.Name, item.Quantity, item.Price, total)
 	}
 	fmt.Println()

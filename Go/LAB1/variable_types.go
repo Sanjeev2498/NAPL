@@ -2,13 +2,18 @@ package main
 
 import (
 	"fmt"
-	"strconv"
+	"unicode/utf8"
 )
 
-func main() {
-    num := 123
-    s := strconv.Itoa(num)
+func variableTypes() {
+	intNum := 3232
+	intNum = intNum + 1
+	fmt.Println(intNum)
 
-    fmt.Println(s)      // 123
-    fmt.Printf("%T\n", s) // string
+	var mystring string = "Hello" + "Sam"
+	fmt.Println(mystring)
+
+	fmt.Println(utf8.RuneCountInString("y"))
+	var myRune rune = 'a'
+	fmt.Println(myRune)
 }
