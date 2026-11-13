@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "yyttwRXlkMo=",
+  "success": true,
+  "projectFilePath": "G:\\NAPL\\F#\\Assignment\\LibrarySystem\\LibrarySystem.fsproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\sanje\\.nuget\\packages\\fsharp.core\\10.1.403\\fsharp.core.10.1.403.nupkg.sha512",
+    "C:\\Users\\sanje\\.nuget\\packages\\stub.system.data.sqlite.core.netstandard\\1.0.119\\stub.system.data.sqlite.core.netstandard.1.0.119.nupkg.sha512",
+    "C:\\Users\\sanje\\.nuget\\packages\\system.data.sqlite.core\\1.0.119\\system.data.sqlite.core.1.0.119.nupkg.sha512"
+  ],
+  "logs": []
+}
