@@ -60,7 +60,7 @@ let getBookSummaries books =
 
 // Display a single book
 let displayBook book =
-    printfn "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+
     printfn "ID:     %d" book.Id
     printfn "Title:  %s" book.Title
     printfn "Author: %s" book.Author
@@ -75,3 +75,4 @@ let displayBooks books =
         printfn "No books found."
     else
         books |> List.iter displayBook
+

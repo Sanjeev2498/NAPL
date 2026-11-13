@@ -4,10 +4,7 @@ open Database
 
 [<EntryPoint>]
 let main argv =
-    printfn "╔════════════════════════════════════════════════════════╗"
-    printfn "║        Library Management System (F#)                  ║"
-    printfn "╚════════════════════════════════════════════════════════╝"
-    printfn ""
+    printfn "LIBRARY MANAGEMENT SYSTEM "
 
     // Initialize database
     printfn "Initializing database..."
@@ -18,19 +15,19 @@ let main argv =
     printfn "Database ready!"
     printfn ""
 
-    // Create sample books
+    //  Sample books databse
     let books = [
-        createBook 1 "The Great Gatsby" "F. Scott Fitzgerald" "978-0743273565" 1925
+        createBook 1 "HornBill" "F.Scott" "978-0743273565" 1925
         createBook 2 "1984" "George Orwell" "978-0451524935" 1949
-        createBook 3 "To Kill a Mockingbird" "Harper Lee" "978-0061120084" 1960
-        createBook 4 "Pride and Prejudice" "Jane Austen" "978-0141439518" 1813
+        createBook 3 "Mockingbird" "H.Lee" "978-0061120084" 1960
+        createBook 4 "INDR" "Jane Austen" "978-0141439518" 1813
         createBook 5 "The Hobbit" "J.R.R. Tolkien" "978-0547928227" 1937
     ]
 
     // CRUD Operations Demo
-    printfn "═══════════════════════════════════════════════════════"
+    printfn "--------------------------------------"
     printfn "1. CREATE - Adding books to database..."
-    printfn "═══════════════════════════════════════════════════════"
+    printfn "--------------------------------------"
     
     books 
     |> List.iter (fun book -> 
@@ -39,34 +36,34 @@ let main argv =
     
     printfn ""
 
-    // READ - Get all books
-    printfn "═══════════════════════════════════════════════════════"
+    // READ  all books
+    printfn "--------------------------------------------------"
     printfn "2. READ - Retrieving all books from database..."
-    printfn "═══════════════════════════════════════════════════════"
+    printfn "--------------------------------------------------"
     
     let allBooks = getAllBooks() |> Async.RunSynchronously
     displayBooks allBooks
     printfn ""
 
     // Pattern Matching & Higher-Order Functions
-    printfn "═══════════════════════════════════════════════════════"
+    printfn "--------------------------------------"
     printfn "3. FILTER - Using higher-order functions..."
-    printfn "═══════════════════════════════════════════════════════"
+    printfn "--------------------------------------"
     
-    printfn "\n📚 Books by George Orwell:"
+    printfn "\n Books by George Orwell:"
     let orwellBooks = getBooksByAuthor "George Orwell" allBooks
     orwellBooks |> getBookSummaries |> List.iter (printfn "  %s")
     
-    printfn "\n📅 Books published after 1940:"
+    printfn "\nBooks published after 1940:"
     let modernBooks = getBooksAfterYear 1940 allBooks
     modernBooks |> getBookSummaries |> List.iter (printfn "  %s")
     
     printfn ""
 
     // UPDATE - Checkout a book
-    printfn "═══════════════════════════════════════════════════════"
+    printfn "--------------------------------------"
     printfn "4. UPDATE - Checking out a book..."
-    printfn "═══════════════════════════════════════════════════════"
+    printfn "-------------------------------------- "
     
     let bookToCheckout = allBooks |> List.head
     let checkedOutBook = checkoutBook bookToCheckout
@@ -85,22 +82,23 @@ let main argv =
     
     printfn ""
 
+   
     // Show available books using filter
-    printfn "═══════════════════════════════════════════════════════"
+    printfn "--------------------------------------"
     printfn "5. FILTER - Available books only..."
-    printfn "═══════════════════════════════════════════════════════"
+    printfn "--------------------------------------"
     
     let currentBooks = getAllBooks() |> Async.RunSynchronously
     let availableBooks = getAvailableBooks currentBooks
     
-    printfn "\n✅ Available books (%d):" (List.length availableBooks)
+    printfn "\n Available books (%d):" (List.length availableBooks)
     availableBooks |> getBookSummaries |> List.iter (printfn "  %s")
     printfn ""
 
     // DELETE operation
-    printfn "═══════════════════════════════════════════════════════"
+    printfn "--------------------------------------"
     printfn "6. DELETE - Removing a book..."
-    printfn "═══════════════════════════════════════════════════════"
+    printfn "--------------------------------------"
     
     let bookIdToDelete = 5
     let deleteResult = deleteBook bookIdToDelete |> Async.RunSynchronously
@@ -110,15 +108,16 @@ let main argv =
     else
         printfn "Book not found"
     
+
     // Show remaining books
     let remainingBooks = getAllBooks() |> Async.RunSynchronously
     printfn "\nRemaining books: %d" (List.length remainingBooks)
     printfn ""
 
     // Summary using pattern matching and map
-    printfn "═══════════════════════════════════════════════════════"
+    printfn "--------------------------------------"
     printfn "7. SUMMARY - Library Statistics"
-    printfn "═══════════════════════════════════════════════════════"
+    printfn "--------------------------------------"
     
     let finalBooks = getAllBooks() |> Async.RunSynchronously
     let totalBooks = List.length finalBooks
